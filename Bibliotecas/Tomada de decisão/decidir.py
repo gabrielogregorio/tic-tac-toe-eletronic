@@ -7,199 +7,158 @@ __version__      =  ' 1.0 '
 
 from random import choice
 from os import system
+class Ia():
+    def escolher_IA(reg,vez):
+        # Possibilidades de vitória
+        possibilidades = [[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[6,4,2],[0,4,8]]
 
-def escolher_IA(reg):
-    global vez
+        #  =========================== SE TIVER CHANCE DE GANHAR ===========================  #    
+        for pos in possibilidades:
+            c = 0
 
-    #  =========================== SE TIVER CHANCE DE GANHAR ===========================  #
-    maior = 0 
-    
-    # pegar as melhores possibilidades
-    lista_melhor = []
-
-    possibilidades = [[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[6,4,2],[0,4,8]]
-    for pos in possibilidades:
-        c = 0
-
-        if ((reg[pos[0]] == ' ' or reg[pos[0]] == vez) and (reg[pos[1]] == ' ' or reg[pos[1]] == vez) and (reg[pos[2]] == ' ' or reg[pos[2]] == vez)):
-
-            if (reg[pos[0]] == vez):
-                c = c+1            
+            if ((reg[pos[0]] == ' ' or reg[pos[0]] == vez) and (reg[pos[1]] == ' ' or reg[pos[1]] == vez) and (reg[pos[2]] == ' ' or reg[pos[2]] == vez)):
+ 
+                if (reg[pos[0]] == vez):
+                    c = c+1            
           
-            if (reg[pos[1]] == vez):
-                c = c+1            
-               
-            if (reg[pos[2]] == vez):
-                c = c+1
-               
-        # SÓ FALTA UM PARA GANHAR!
-        if (c == 2):
-            reg[pos[0]] = vez
-            reg[pos[1]] = vez
-            reg[pos[2]] = vez
-
-            print('Vou ganhar')
-            return reg
-
-    #  ===========================  IMPEDIR QUE ELE GANHE  ===========================  #
-    # pegar as melhores possibilidades
-    maior = 0 
-    
-    # pegar as melhores possibilidades
-    lista_melhor = []
-
-    # Qual ele é?
-    if vez == "x":
-        vez_dele = "o"
-    else:
-        vez_dele = "x"
-    
-    possibilidades = [[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[6,4,2],[0,4,8]]
-    for pos in possibilidades:
-        c = 0
-        if ((reg[pos[0]] == ' ' or reg[pos[0]] == vez_dele) and (reg[pos[1]] == ' ' or reg[pos[1]] == vez_dele) and (reg[pos[2]] == ' ' or reg[pos[2]] == vez_dele)):
-
-
-            if (reg[pos[0]] == vez_dele):
-                c = c+1            
-          
-            if (reg[pos[1]] == vez_dele):
-                c = c+1            
-               
-            if (reg[pos[2]] == vez_dele):
-                c = c+1
-               
-        # SÓ FALTA UM PARA EELLEE GANHAR!
-        if (c == 2):
-            if reg[pos[0]] == ' ': 
+                if (reg[pos[1]] == vez):
+                    c = c+1            
+                
+                if (reg[pos[2]] == vez):
+                    c = c+1
+                
+            # SÓ FALTA UM PARA GANHAR!
+            if (c == 2):
                 reg[pos[0]] = vez
-
-            elif reg[pos[1]] == ' ': 
                 reg[pos[1]] = vez
-
-            elif reg[pos[2]] == ' ': 
                 reg[pos[2]] = vez
 
-            print('Impedir que ele ganhe')
-            return reg
+                print('ACHO QUE GANHEI')
+                return reg
 
-    # =========================== APENAS JOGAR =========================== #
-    possibilidades = [0,1,2,3,4,5,6,7,8]
+        #  ===========================  IMPEDIR QUE ELE GANHE  ===========================  #
+     
+        # QUEM É O OPONENTE
+        if vez == "x":
+            vez_dele = "o"
+        else:
+            vez_dele = "x"
+        
+        for pos in possibilidades:
+            c = 0
+            if ((reg[pos[0]] == ' ' or reg[pos[0]] == vez_dele) and (reg[pos[1]] == ' ' or reg[pos[1]] == vez_dele) and (reg[pos[2]] == ' ' or reg[pos[2]] == vez_dele)):
 
-    # QUAIS POSIÇÕES ESTÃO DISPONÍVEIS?
-    pos_disponiveis = []
-    for pos in possibilidades:
-        if reg[pos] == ' ':
-            pos_disponiveis.append(pos)
+                if (reg[pos[0]] == vez_dele):
+                    c = c+1            
+              
+                if (reg[pos[1]] == vez_dele):
+                    c = c+1            
+                   
+                if (reg[pos[2]] == vez_dele):
+                    c = c+1
+                   
+            # SÓ FALTA UM PARA ELE GANHAR
+            if (c == 2):
+                if reg[pos[0]] == ' ': 
+                    reg[pos[0]] = vez
 
-    reg[choice(pos_disponiveis)] = vez
-    print('jogada aleatória!')
-    return reg
+                elif reg[pos[1]] == ' ': 
+                    reg[pos[1]] = vez
 
-# Pontos de vitória
-def marcar_vitoria(ganhador):
-    print('Houve uma vitória em :{},{} e {}'.format(ganhador[0],ganhador[1],ganhador[2]))
+                elif reg[pos[2]] == ' ': 
+                    reg[pos[2]] = vez
 
-# Alguem ganhou?
-def ganhou(reg):
-    global vez
+                print('Impedir que ele ganhe')
+                return reg
 
-    # Captura qual peça o computador é
-    global qual_e_o_computador
-    
-    
-    # Lista com três posições
-    ganhador = []
+        # =========================== APENAS JOGAR =========================== #
+        possibilidades = [0,1,2,3,4,5,6,7,8]
 
-    # Deu velha ?
-    global velha
+        # QUAIS POSIÇÕES ESTÃO DISPONÍVEIS?
+        pos_disponiveis = []
+        for pos in possibilidades:
+            if reg[pos] == ' ':
+                pos_disponiveis.append(pos)
 
-    # possibilidades de vitória nos quadrinhos...
-    if reg[0]  == vez and reg[3] == vez and reg[6] == vez:
-        ganhador = [0,3,6]
-        marcar_vitoria(ganhador)
-        
-    if reg[1]  == vez and reg[4] == vez and reg[7] == vez:
-        ganhador = [1,4,7]
-        marcar_vitoria(ganhador)
-        
-    if reg[2]  == vez and reg[5] == vez and reg[8] == vez:
-        ganhador = [2,5,8]
-        marcar_vitoria(ganhador)
-        
-    if reg[0]  == vez and reg[1] == vez and reg[2] == vez:
-        ganhador = [0,1,2]
-        marcar_vitoria(ganhador)
-        
-    if reg[3]  == vez and reg[4] == vez and reg[5] == vez:
-        ganhador = [3,4,5]
-        marcar_vitoria(ganhador)
-        
-    if reg[6]  == vez and reg[7] == vez and reg[8] == vez:
-        ganhador = [6,7,8]
-        marcar_vitoria(ganhador)
-        
-    if reg[6]  == vez and reg[4] == vez and reg[2] == vez:
-        ganhador = [6,4,2]
-        marcar_vitoria(ganhador)
-        
-    if reg[0]  == vez and reg[4] == vez and reg[8] == vez:
-        ganhador = [0,4,8]
-        marcar_vitoria(ganhador)
-        
-    if velha == 9 and ganhador == []:
-        msg = "Deu velha pessoal"
-        vitoria(msg)
+        reg[choice(pos_disponiveis)] = vez
+        print('jogada aleatória!')
+        return reg
+
+    # Pontos de vitória
+    def marcar_vitoria(ganhador):
+        print('Houve uma vitória em :{},{} e {}'.format(ganhador[0],ganhador[1],ganhador[2]))
 
     # Alguem ganhou?
-    if (ganhador != []):
+    def ganhou(vez,reg,velha):
+        # Lista com três posições
+        ganhador = []
 
-        msg = "Jogador ",vez, " ganhou"
 
-        # Tela de vitoria
-        return vitoria(msg)
+        # possibilidades de vitória nos quadrinhos...
+        if reg[0]  == vez and reg[3] == vez and reg[6] == vez:
+            ganhador = [0,3,6]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[1]  == vez and reg[4] == vez and reg[7] == vez:
+            ganhador = [1,4,7]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[2]  == vez and reg[5] == vez and reg[8] == vez:
+            ganhador = [2,5,8]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[0]  == vez and reg[1] == vez and reg[2] == vez:
+            ganhador = [0,1,2]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[3]  == vez and reg[4] == vez and reg[5] == vez:
+            ganhador = [3,4,5]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[6]  == vez and reg[7] == vez and reg[8] == vez:
+            ganhador = [6,7,8]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[6]  == vez and reg[4] == vez and reg[2] == vez:
+            ganhador = [6,4,2]
+            Ia.marcar_vitoria(ganhador)
+            
+        if reg[0]  == vez and reg[4] == vez and reg[8] == vez:
+            ganhador = [0,4,8]
+            Ia.marcar_vitoria(ganhador)
+            
+        if velha == 9 and ganhador == []:
+            msg = "Deu velha pessoal"
+            return Ia.vitoria(vez,msg)
 
-# Comemorar vitória ou velha
-def vitoria(msg):
-    global vez
+        # Alguem ganhou?
+        if (ganhador != []):
 
-    if (msg!="Deu velha pessoal"):
-        print('Vitória! do ',vez)
-    else:
-        print('deu velha',vez)
+            msg = "Jogador ",vez, " ganhou"
 
-def renderizar(reg):
-    system('clear')
-    print(reg[0:3])
-    print(reg[3:6])
-    print(reg[6:])
+            # Tela de vitoria
+            return Ia.vitoria(vez,msg)
 
-def troca_vez():
-    global vez
-    if vez == 'x':
-        vez = 'o'
-    else:
-        vez = 'x'
+        return False
 
-global velha
-global vez
-vez = 'x'
+    # Comemorar vitória ou velha
+    def vitoria(vez,msg):
+        if (msg!="Deu velha pessoal"):
+            print('Vitória! do ',vez)
+            return 'vitória'
+        else:
+            print('deu velha',vez)
+            return 'velha'
 
-velha = 0
-reg = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
+    def renderizar(reg):
+        system('clear')
+        print(reg[0:3])
+        print(reg[3:6])
+        print(reg[6:])
 
-# loop do programa
-while True:
-    renderizar(reg)
+    def troca_vez(vez):
+        if vez == 'x':
+            return 'o'
+        else:
+            return 'x'
 
-    # JOGADOR
-    escolha = int(input('Escolha uma opção: 0,1,2..,5,6,7,8'))
-    reg[escolha] = vez
-    ganhou(reg)
-    troca_vez()
- 
-    reg = escolher_IA(reg)
-    ganhou(reg)
-    troca_vez()
-
-    o = input()
