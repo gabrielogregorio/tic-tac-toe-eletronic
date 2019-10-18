@@ -1,4 +1,4 @@
-﻿/*
+/*
   Projeto para a Fatec Aberta em Araçatuba
   Análise e Desenvolvimento de Sistemas
   Desenvolvido por: Equipe Pseudo Geeks
@@ -7,6 +7,7 @@
 
 // Declaração de variáveis
 // Definindo o número dos pinos dos LEDs
+
 const int greenLED1 = 22;
 const int blueLED1 = 23;
 
@@ -35,15 +36,15 @@ const int greenLED9 = 38;
 const int blueLED9 = 39;
 
 // Definindo o número dos pinhos dos pushButtons
-const int pushButton1 = 41;
-const int pushButton2 = 42;
-const int pushButton3 = 43;
-const int pushButton4 = 44;
-const int pushButton5 = 45;
-const int pushButton6 = 46;
-const int pushButton7 = 47;
-const int pushButton8 = 48;
-const int pushButton9 = 49;
+const int pushButton1 = 2;
+const int pushButton2 = 3;
+const int pushButton3 = 4;
+const int pushButton4 = 5;
+const int pushButton5 = 6;
+const int pushButton6 = 7;
+const int pushButton7 = 8;
+const int pushButton8 = 9;
+const int pushButton9 = 10;
 
 // Definindo o estado inicial dos pushButtons
 int pushButtonState1 = 0;
@@ -62,107 +63,107 @@ void setup ()
   Serial.begin(9600);
 
   // Definindo os pinos dos LEDs como OUTPUT
-
-  pinMode(greenLED1, OUTPUT);
-  pinMode(blueLED1, OUTPUT);
+  pinMode(greenLED1,   OUTPUT);
+  pinMode(blueLED1,    OUTPUT);
   pinMode(pushButton1, INPUT);
 
-  pinMode(greenLED2, OUTPUT);
-  pinMode(blueLED2, OUTPUT);
+  pinMode(greenLED2,   OUTPUT);
+  pinMode(blueLED2,    OUTPUT);
   pinMode(pushButton2, INPUT);
 
-  pinMode(greenLED3, OUTPUT);
-  pinMode(blueLED3, OUTPUT);
+  pinMode(greenLED3,   OUTPUT);
+  pinMode(blueLED3,    OUTPUT);
   pinMode(pushButton3, INPUT);
 
-  pinMode(greenLED4, OUTPUT);
-  pinMode(blueLED4, OUTPUT);
+  pinMode(greenLED4,   OUTPUT);
+  pinMode(blueLED4,    OUTPUT);
   pinMode(pushButton4, INPUT);
 
-  pinMode(greenLED5, OUTPUT);
-  pinMode(blueLED5, OUTPUT);
+  pinMode(greenLED5,   OUTPUT);
+  pinMode(blueLED5,    OUTPUT);
   pinMode(pushButton5, INPUT);
 
-  pinMode(greenLED6, OUTPUT);
-  pinMode(blueLED6, OUTPUT);
+  pinMode(greenLED6,   OUTPUT);
+  pinMode(blueLED6,    OUTPUT);
   pinMode(pushButton6, INPUT);
 
-  pinMode(greenLED7, OUTPUT);
-  pinMode(blueLED7, OUTPUT);
+  pinMode(greenLED7,   OUTPUT);
+  pinMode(blueLED7,    OUTPUT);
   pinMode(pushButton7, INPUT);
 
-  pinMode(greenLED8, OUTPUT);
-  pinMode(blueLED8, OUTPUT);
+  pinMode(greenLED8,   OUTPUT);
+  pinMode(blueLED8,    OUTPUT);
   pinMode(pushButton8, INPUT);
 
-  pinMode(greenLED9, OUTPUT);
-  pinMode(blueLED9, OUTPUT);
+  pinMode(greenLED9,   OUTPUT);
+  pinMode(blueLED9,    OUTPUT);
   pinMode(pushButton9, INPUT);
 }
 
 void loop()
 {
+  
   // Nesta parte do código nós enviaremos um sinal de entrada para a porta serial se o estado do pushButton for HIGH
-
-  int buttonSignal = 0;
-
+  pushButtonState1 = 0;
+  pushButtonState2 = 0;
+  pushButtonState3 = 0;
+  pushButtonState4 = 0;
+  pushButtonState5 = 0;
+  pushButtonState6 = 0;
+  pushButtonState7 = 0;
+  pushButtonState8 = 0;
+  pushButtonState9 = 0;
+  
   pushButtonState1 = digitalRead(pushButton1);
-  if (pushButtonState1 == HIGH);
-  {
-    buttonSignal = 1;
-  }
-
   pushButtonState2 = digitalRead(pushButton2);
-  if (pushButtonState2 == HIGH);
-  {
-    buttonSignal = 2;
-  }
-
   pushButtonState3 = digitalRead(pushButton3);
-  if (pushButtonState3 == HIGH);
-  {
-    buttonSignal = 3;
-  }
-
   pushButtonState4 = digitalRead(pushButton4);
-  if (pushButtonState4 == HIGH);
-  {
-    buttonSignal = 4;
-  }
-
   pushButtonState5 = digitalRead(pushButton5);
-  if (pushButtonState5 == HIGH);
-  {
-    buttonSignal == 5;
-  }
-
   pushButtonState6 = digitalRead(pushButton6);
-  if (pushButtonState6 == HIGH);
-  {
-    buttonSignal = 6;
-  }
-
   pushButtonState7 = digitalRead(pushButton7);
-  if (pushButtonState7 == HIGH);
-  {
-    buttonSignal = 7;
-  }
-
   pushButtonState8 = digitalRead(pushButton8);
-  if (pushButtonState8 == HIGH);
-  {
-    buttonSignal = 8;
-  }
-
   pushButtonState9 = digitalRead(pushButton9);
-  if (pushButtonState9 == HIGH);
-  {
-    buttonSignal = 9;
-  }
+
+ if (pushButtonState1 == 1)
+ {
+    Serial.println(1);
+ }
+ else if (pushButtonState2 == 1)
+ {
+    Serial.println(2);
+ }
+ else if (pushButtonState3 == 1)
+ {
+    Serial.println(3);
+ }
+ else if (pushButtonState4 == 1)
+ {
+    Serial.println(4);
+ }
+ else if (pushButtonState5 == 1)
+ {
+    Serial.println(5);
+ }
+ else if (pushButtonState6 == 1)
+ {
+    Serial.println(6);
+ }
+ else if (pushButtonState7 == 1)
+ {
+    Serial.println(7);
+ } 
+ else if (pushButtonState8 == 1)
+ {
+    Serial.println(8);
+ } 
+ else if (pushButtonState9 == 1)
+ {
+    Serial.println(9);
+ }
+
 
   // Nesta parte estamos lendo o sinal de entrada da porta serial
   // Os LEDs acenderão de acordo com o sinal recebido
-
   char inputSignal = Serial.read();
 
   if (inputSignal == 'a')
@@ -267,3 +268,4 @@ void loop()
     digitalWrite(blueLED9, LOW);
   }
 }
+
