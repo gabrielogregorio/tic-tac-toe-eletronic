@@ -3,7 +3,7 @@ from threading import Thread
 from time import sleep
 from serial import Serial
 
-conexao = Serial('/dev/ttyACM2', 9600)
+conexao = Serial('/dev/ttyACM0', 9600)
 conexao.isOpen()
 
 global dic

@@ -96,40 +96,40 @@ class Ia():
 
         # possibilidades de vitória nos quadrinhos...
         if reg[0]  == vez and reg[3] == vez and reg[6] == vez:
-            ganhador = [0,3,6]
+            ganhador += [0,3,6]
             Ia.marcar_vitoria(ganhador)
             
         if reg[1]  == vez and reg[4] == vez and reg[7] == vez:
-            ganhador = [1,4,7]
+            ganhador += [1,4,7]
             Ia.marcar_vitoria(ganhador)
             
         if reg[2]  == vez and reg[5] == vez and reg[8] == vez:
-            ganhador = [2,5,8]
+            ganhador += [2,5,8]
             Ia.marcar_vitoria(ganhador)
             
         if reg[0]  == vez and reg[1] == vez and reg[2] == vez:
-            ganhador = [0,1,2]
+            ganhador += [0,1,2]
             Ia.marcar_vitoria(ganhador)
             
         if reg[3]  == vez and reg[4] == vez and reg[5] == vez:
-            ganhador = [3,4,5]
+            ganhador += [3,4,5]
             Ia.marcar_vitoria(ganhador)
             
         if reg[6]  == vez and reg[7] == vez and reg[8] == vez:
-            ganhador = [6,7,8]
+            ganhador += [6,7,8]
             Ia.marcar_vitoria(ganhador)
             
         if reg[6]  == vez and reg[4] == vez and reg[2] == vez:
-            ganhador = [6,4,2]
+            ganhador += [6,4,2]
             Ia.marcar_vitoria(ganhador)
             
         if reg[0]  == vez and reg[4] == vez and reg[8] == vez:
-            ganhador = [0,4,8]
+            ganhador += [0,4,8]
             Ia.marcar_vitoria(ganhador)
             
         if velha == 9 and ganhador == []:
             msg = "Deu velha pessoal"
-            return Ia.vitoria(vez,msg)
+            return [Ia.vitoria(vez,msg),ganhador]
 
         # Alguem ganhou?
         if (ganhador != []):
@@ -137,9 +137,9 @@ class Ia():
             msg = "Jogador ",vez, " ganhou"
 
             # Tela de vitoria
-            return Ia.vitoria(vez,msg)
+            return [Ia.vitoria(vez,msg),ganhador]
 
-        return False
+        return [False,ganhador] # 10 não tem significado
 
     # Comemorar vitória ou velha
     def vitoria(vez,msg):
