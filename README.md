@@ -1,5 +1,5 @@
 # jogo_da_velha_gamer
-Um jogo da velha "gamer" para a Fatec Aberta
+Pretendemos criar um jogo da velha para apresentar na Fatec Aberta de 2019 em Araçatuba.
 
 ----------------------------------------------------------------------------------------------------
 
