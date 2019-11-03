@@ -5,24 +5,69 @@ from random    import randint
 from time      import sleep
 from os        import system
 import serial
+import pygame
 
 global conexao
 global entrada_agora
 global vez
+global reg
 
 entrada_agora = False
+
+def pmusic(file):
+    pygame.init()
+    pygame.mixer.init()
+    clock = pygame.time.Clock()
+    pygame.mixer.music.load(file)
+    pygame.mixer.music.play()
+    #while pygame.mixer.music.get_busy():
+    #    print("Playing...")
+    #    clock.tick(1000)
+def getmixerargs():
+    pygame.mixer.init()
+    freq, size, chan = pygame.mixer.get_init()
+    return freq, size, chan
+def initMixer():
+    BUFFER = 3072  # audio buffer size, number of samples since pygame 1.8.
+    FREQ, SIZE, CHAN = getmixerargs()
+    pygame.mixer.init(FREQ, SIZE, CHAN, BUFFER)
+initMixer()
+
+def play(file = 'sons/futuristic_clicking_noise.wav'):
+
+    try:        
+        pmusic(file)
+    except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
+        pygame.mixer.music.stop()
+    except Exception:
+        print("Erro desconhecido. ")
+
+    print("Done")
+
+
+
+
+
+
+
+
+
+
 
 # Tentar conectar através de diversas portas.
 def tentar_conectar():
     global conexao
-    for num in range(0,10):
-        porta = '/dev/ttyACM{}'.format(num)
-        try:
-            conexao = serial.Serial(porta, 9600)
-        except:
-            pass
-        else:
-            return conexao
+    lista = ['/dev/ttyACM','/com']
+    for x in lista:
+
+        for num in range(0,10):
+            porta = '{}{}'.format(x,num)
+            try:
+                conexao = serial.Serial(porta, 9600)
+            except:
+                 pass
+            else:
+                return conexao
 
 # LER O ESTADO DOS BOTÕES
 def leitura_de_botoes():
@@ -127,6 +172,7 @@ def deu_velha_comemoracao():
 def inicializacao_animacao():
     atualizar_cor_botoes("z") # DESIGAR TUDO
     espera = 0.1
+    sleep(espera)
 
     lista_vez = ['x','o']
     for elemento in lista_vez:
@@ -155,9 +201,7 @@ def atualizar_interface(reg):
     Ia.renderizar(reg)                # RENDERIZAR TERMINAL
     renderizar_botoes(reg)            # RENDERIZAR BOTÕES
             
-def reproduzir_som_thread(link):
-     pass
-     #playsound(link)
+
 
 # Tentar obter uma conexão
 conexao = tentar_conectar() 
@@ -174,19 +218,20 @@ renderizar_botoes(reg) # RENDERIZAR BOTÕES
 # THREAD PARA LER CONTINUAMENTE A SERIAL DO ARDUINO
 t = Thread(target=sem_pilha_por_favor)
 t.start()
+sleep(1)
 
 inicializacao_animacao()
 
 # LOOP DO GAME
 while True:
     # ================== JOGADOR ================== #
-
+    
     # CAPTURAR O BOTÃO QUE O USUÁRIO DIGITAR
     escolha = entrada_agora
     while escolha == False:
         escolha = entrada_agora
 
-    reproduzir_som_thread('sons/futuristic_clicking_noise.wav')
+    play()
     escolha = int(escolha)
 
     # JÁ ESTÁ SENDO USADO
@@ -195,6 +240,12 @@ while True:
     else:
         reg[escolha-1] = vez
         velha +=1
+    '''
+    sleep(randint(1.0,4.0)) #remove
+    reg = Ia.escolher_IA(reg,vez) # remove
+    play() # remove
+    velha +=1  # remove
+    '''
 
     Ia.renderizar(reg)       # TERMINAL
     renderizar_botoes(reg)   # RENDERIZAR BOTÕES
@@ -202,12 +253,14 @@ while True:
     # ALGUÉM GANHOU?
     status = Ia.ganhou(vez,reg,velha)
     if status[0] =='vitória':
+        play('sons/tuudurt_piglevelwin2.mp3')
         ganhei_comemoracao(status[1],reg) # ANIMAÇÃO VITÓRIA
         vez, velha,reg = reseta()         # RECOMEÇAR
         atualizar_interface(reg)
         continue
 
     elif status[0] == 'velha':
+        play('sons/76376__deleted-user-877451__game-over.wav')
         deu_velha_comemoracao()           # ANIMAÇÃO DEU VELHA
         vez, velha,reg = reseta()         # RECOMEÇAR
         atualizar_interface(reg)
@@ -220,7 +273,8 @@ while True:
     sleep(randint(1.0,4.0))
 
     reg = Ia.escolher_IA(reg,vez)
-    reproduzir_som_thread('sons/futuristic_clicking_noise.wav')
+    play()
+
 
     velha +=1
 
@@ -229,12 +283,14 @@ while True:
 
     status = Ia.ganhou(vez,reg,velha)
     if status[0] =='vitória':
+        play('sons/quartetofantastico__risadasaltas.wav')
         ganhei_comemoracao(status[1],reg) # ANIMAÇÃO VITÓRIA
         vez, velha,reg = reseta()         # RECOMEÇAR
         atualizar_interface(reg)
         continue
 
     elif status[0] == 'velha':
+        play('sons/76376__deleted-user-877451__game-over.wav')
         deu_velha_comemoracao()           # ANIMAÇÃO DEU VELHA
         vez, velha,reg = reseta()         # RECOMEÇAR
         atualizar_interface(reg)
