@@ -1,7 +1,3 @@
-""" 
-Script para testar a conexão com o arduino
-"""
-
 from tkinter import *
 from threading import Thread
 from time import sleep

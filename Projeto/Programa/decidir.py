@@ -93,7 +93,6 @@ class Ia():
         # Lista com três posições
         ganhador = []
 
-
         # possibilidades de vitória nos quadrinhos...
         if reg[0]  == vez and reg[3] == vez and reg[6] == vez:
             ganhador += [0,3,6]
