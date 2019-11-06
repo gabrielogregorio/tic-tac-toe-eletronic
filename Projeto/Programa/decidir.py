@@ -8,7 +8,7 @@ __version__      =  ' 1.0 '
 from random import choice
 from os import system
 class Ia():
-    def escolher_IA(reg,vez):
+    def escolher_IA(reg,vez,velha):
         # Possibilidades de vitória
         possibilidades = [[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[6,4,2],[0,4,8]]
 
@@ -71,9 +71,129 @@ class Ia():
                 print('Impedir que ele ganhe')
                 return reg
 
+        # =========================== QUEBRA DE JOGADAS =========================== #
+        # Quebrar jogadas.
+        
+        if ((reg[0] == vez_dele) or (reg[2] == vez_dele) or (reg[6] == vez_dele) or (reg[8] == vez_dele)):
+            if ((reg[3] == ' ') or (reg[1] == ' ') or (reg[5] == ' ') or (reg[7] == ' ')):
+                if (reg[4] == ' '):
+                   reg[4] = vez
+                   print('QUEBRA DE JODADA -- Jogada para ganhar')
+                   return reg
+
+        # Quebra de jogada no meio
+        if (reg[4] == vez_dele):
+            if (reg[0] == ' '):
+                reg[0] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+ 
+            elif (reg[2] == ' '):
+                reg[2] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+            elif (reg[6] == ' '):
+                reg[6] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+            elif (reg[8] == ' '):
+                reg[8] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+        # Quebrar jogadas inteligentes
+        if ((reg[0] == vez_dele) and (reg[8] == vez_dele) or (reg[2] == vez_dele) and (reg[6] == vez_dele) ):
+
+            if (reg[1] == ' '):
+                reg[1] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+            elif (reg[3] == ' '):
+                reg[3] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+            elif (reg[5] == ' '):
+                reg[5] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+            elif (reg[7] == ' '):
+                reg[7] = vez
+                print('QUEBRA DE JODADA -- Jogada para ganhar especial')
+                return reg
+
+        # Quebrar NOVO BUG
+        if (velha == 1):
+            if reg[1] == vez_dele:
+                if reg[4] == ' ':
+                    reg[4] = vez
+
+            elif reg[3] == vez_dele:
+                if reg[4] == ' ':
+                    reg[4] = vez
+
+            elif reg[5] == vez_dele:
+                if reg[4] == ' ':
+                    reg[4] = vez
+
+            elif reg[7] == vez_dele:
+                if reg[4] == ' ':
+                    reg[4] = vez
+            return reg
+
+        # Quebrar OUTRO NOVO BUG
+        if ((reg[1] == vez_dele) and (reg[6] == vez_dele)):
+            if reg[0] == ' ':
+                reg[0] = vez
+                return reg
+
+            elif reg[3] == ' ':
+                reg[3] = vez
+                return reg
+
+        elif ((reg[1] == vez_dele) and (reg[8] == vez_dele)):
+            if reg[2] == ' ':
+                reg[2] = vez
+                return reg
+
+            elif reg[5] == ' ':
+                reg[5] = vez
+                return reg
+
+        elif ((reg[0] == vez_dele) and (reg[7] == vez_dele)):
+            if reg[3] == ' ':
+                reg[3] = vez
+                return reg
+
+            elif reg[6] == ' ':
+                reg[6] = vez
+                return reg
+
+        elif ((reg[2] == vez_dele) and (reg[7] == vez_dele)):
+            if reg[5] == ' ':
+                reg[5] = vez
+                return reg
+
+            elif reg[8] == ' ':
+                reg[8] = vez
+                return reg
+        # coooooooorrrrrrreeeeeeeecccccccaaaaaaaaaaaaaaaaaoooooooooooooooooo
+
+        # quebra de jogada
+        #0,5 -> 1,2
+        #3,2 -> 0,1
+        #0,7 -> 3,6
+        #2,6 -> 5,8
+        #6,5 -> 7,8
+        #3,8 -> 6,7
+
+
         # =========================== APENAS JOGAR =========================== #
         possibilidades = [0,1,2,3,4,5,6,7,8]
-
         # QUAIS POSIÇÕES ESTÃO DISPONÍVEIS?
         pos_disponiveis = []
         for pos in possibilidades:
