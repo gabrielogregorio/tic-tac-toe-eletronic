@@ -223,4 +223,3 @@ E então precisamos instalar o PySerial, essa biblioteca nos permite ler e envia
 ```Bash
 pip install pyserial
 ```
-O resultado final de tudo isso pode ser visto nesses vídeos.
