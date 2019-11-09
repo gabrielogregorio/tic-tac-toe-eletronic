@@ -52,9 +52,7 @@ Inicialmente ele era independente, portanto, conseguimos testá-la sozinha no co
 
 Isso só foi possível por que padronizamos como a comunicação entre o Arduíno e o computador seria feita, através de tabelas.
 
----------------------------------------------------------------------------------------------------------------
-
-# Controlando o universo
+### Controlando o universo
 Ao mesmo tempo, iniciamos o planejamento e a codificação do Arduíno.
 
 Planejamos as respostas de duas perguntas principais:
@@ -185,10 +183,11 @@ Com a placa em mãos, testamos o comportamento dos botões de plásticos que que
 
 Com tudo de acordo, posicionamos os botões, os leds, os resistores e fomos soldando eles na placa. Como regra, nós sempre fazíamos etapa por etapa, ou seja, a etapa de interligação dos resistores dos botões era apenas isso, iniciávamos e finalizávamos nisso, fazendo testes para verificar se a solda estáva boa, se algum fio se soltou, se tem alguma coisa se comportando mal, etc.
 
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/etapa%20de%20produ%C3%A7%C3%A3o.jpg)
+
 Fizemos isso até a última tarefa, sempre tentando fazer o melhor trabalho possível. Sem dúvidas, esse foi a tarefa mais demorada, e que exigiu mais testes.
 
 Essa etapa também foi a que mais exigiu delicadeza, já que erros poderiam ocasionar na não conclusão do projeto.
-![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/etapa%20de%20produ%C3%A7%C3%A3o.jpg)
 
 Quando a parte eletrônica estava toda soldada, fizemos mais um teste geral, validando que tudo estava funcionando de acordo com o que foi previsto e que não haviam curtos na placa. Após isso que sentimos confiança para ligar o a placa no Arduíno, como já tínhamos feito um teste na protoboard e a placa estava respondendo de acordo, a integração foi literalmente só ligar os fios, o resto já havia sido testado e validado as etapas anteriores.
 
