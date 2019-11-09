@@ -190,7 +190,7 @@ Fizemos isso até a última tarefa, sempre tentando fazer o melhor trabalho poss
 
 Essa etapa também foi a que mais exigiu delicadeza, já que erros poderiam ocasionar na não conclusão do projeto.
 
-Quando a parte eletrônica estava toda soldada, fizemos mais um teste geral, validando que tudo estava funcionando de acordo com o que foi previsto e que não haviam curtos na placa. Após isso que sentimos confiança para ligar o a placa no Arduíno, como já tínhamos feito um teste na protoboard e a placa estava respondendo de acordo, a integração foi literalmente só ligar os fios, o resto já havia sido testado e validado as etapas anteriores.
+Quando a parte eletrônica estava toda soldada, fizemos mais um teste geral, validando que tudo estava funcionando de acordo com o que foi previsto e que não haviam curtos na placa. Após isso que sentimos confiança para ligar o a placa no Arduíno, como já tínhamos feito um teste na protoboard e a placa estava respondendo de acordo, a integração foi literalmente só ligar os fios, o resto já havia sido testado e validado nas etapas anteriores.
 
 A parte superior ficou assim:
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/parte%20superior.jpg)
