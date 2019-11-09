@@ -1,66 +1,71 @@
-#  jogo_da_velha_gamer
-Um jogo da velha "gamer" para Fatec Aberta
+#  Jogo da velha gamer
+Um jogo da velha **"gamer"** para Fatec Aberta ( Gamer é por que tem LED’s, isso aumenta o FPS do computador em 256 %, hashuashuashuas… )
 
- -------------------------------------------------- --------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 
-#  Nossas expectativas
-##  Placa de Circuitos  
+# Objetivo
+Desenvolver um jogo da velha usando LED’s, que seja clicável, que tenha sons e que seja executado em um computador, usando a linguagem Python 3 (Porque já tínhamos uma biblioteca própria mais ou menos pronta), um Arduíno mega ( Porque temos um exemplar e temos uma noção de como ambos se encaixam ) e que tenha uma estrutura parecido com esse modelo 3D que fizemos:
 
+![O que pensamos em fazer](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/img2.png)
 
- -------------------------------------------------- --------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 
-##  Modelos visuais
- 
-![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/img4.png)
+> Os passos descritos aqui não foram executados necessariamente nessa ordem que eles estão descritos.
 
- -------------------------------------------------- --------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 
-# Colocando em prática   
+# Planejando
+Criamos um quadro no [Trello](https://trello.com/), onde organizamos todas as etapas que iriamos precisar fazer para realizar o projeto.
 
-### Planejando
-Criamos um quadro no ![Trello](https://trello.com/), onde organizamos todas as etapas que preciariamos fazer para realizar o projeto.
+Começamos por definir com exatidão o que cada parte faria:
+- O Arduíno ligará e desligar os LED’s e também irá ler o estado dos botões.
+- O circuíto eletrônico só terá função de obedecer aos comandos do Arduíno.
+- O script em Python dará comandos para o Arduíno, sendo ele quem lê as entradas, comanda as saídas e inicia a reprodução do som.
+- O sistema deve funcionar com perfeição no Windows 10.
 
-Começamos por definir com exatidão o que cada parte iria fazer:
-- O arduino irá ligar e desligar os leds e também irá ler o estado do botões. Nada mais!
-- O circuto eletrônico só terá função de obedecer aos comandos do Arduino, filtrando sinais indesejados para ele.
-- O script em Python irá dar comandos para o arduino, sendo ele quem lê as entradas, comanda as saidas e inicia a reprodução do som.
-- O sistema deve funcionar com perfeição no Windows.
-
-Depois, começamos a definir quem iria fazer o que:
+Depois, começamos a definir quem faria o que:
 - Quem vai fazer o script?
+- Quem vai trabalhar no Arduíno?
 - Quem vai fazer a placa?
 - Quem vai trabalhar no design?
+- Quem vai trabalhar nas melhorias?
 
-Depois começamos a fazer testes, para ver come seria o modelo 3D, sem se preocupar com detalhes mais técnicos. Nesse passo, conseguimos descobrir diversas falhas que nosso projeto teria.
+Depois começamos a fazer testes, para ver como seria o modelo 3D, sem se preocupar com detalhes mais técnicos. Nesse passo, conseguimos descobrir diversas falhas que nosso projeto teria.
+
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/img1.png)
 
-Usando diversos softwares, para celular e para computador, definimos um modelo que seria legal para os nossos circuitos eletrônicos, depois geramos um modelo 3D, percebemos alguns novos problemas que poderiamos ter, então já iniciamos um plano B, considerando que esses problemas poderiam aparecer. Na etapa de produção, acabamos contornando esses problemas, mas os modelos que fizemos, nos deram uma visão fantastica sobre como cada parte do circuito, o que facilitou demais no desenvolvimento.
+Usando diversos softwares para celular e para computador, fizemos um circuito eletrônico que seria legal e acessível para o nosso projeto, depois geramos um modelo 3D. Percebemos alguns novos problemas que poderíamos ter, então já iniciamos um plano B, considerando que esses problemas poderiam aparecer. 
+Na etapa de produção, acabamos contornando esses problemas, mas os modelos que fizemos, nos deram uma visão fantástica sobre como cada parte do circuito deveria funcionar, o que facilitou demais no desenvolvimento.
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/3d.png)
 
-# Criando os programas.  
-### Desenvolvendo um celebro
-Começamos a desenvolver uma versão simples de como o script iria funcionar, decimos adotar o Python com a biblioteca pyserial para que pudessemos escreve-la e nos conectarmos com o arduino. Posteriormete, adicionamos a biblioteca pygame para reproduzir o som.
+---------------------------------------------------------------------------------------------------------------
 
-A ideia é básica, eu reaproveitei pedaços de código de um jogo da velha que eu tinha feito anteriormente, em que ele recebe uma lista com 9 elementos, os elementos podem ser ' ', 'x' ou 'o'. Eles definem o estado daquela posição no tabuleiro. A biblioteca analisa essa lista, com todos os dados sobre onde está cada jogador e então escolhe uma posição de acordo com uma série de regras. A biblioteca retorna a própria lista com a posição que ela escolheu.
+# Criando os programas.
+### Desenvolvendo um cérebro.
+Começamos a desenvolver uma versão simples de como o script funcionaria, decidimos adotar o Python 3.6 com a biblioteca PySerial para que pudéssemos nos conectarmos com o Arduíno. Posteriormente, adicionamos a biblioteca PyGame para reproduzir o som.
 
-Então fizemos um outro script, que coordena a posição que o jogador escolheu, executa a biblioteca espera a posição que o "computador escolheu", que envia e faz a leitura de dados da serial e que executa os sons de acordo com o que está acontecendo.
+A ideia é básica, eu reaproveitei pedaços de código de um jogo da velha que eu tinha feito anteriormente, em que ele recebe uma lista com 9 elementos, os elementos podem ser ' ', 'x' ou 'o'. Eles definem o estado de todas as posições no tabuleiro. A biblioteca analisa essa lista, com todos os dados sobre onde está cada jogador e então escolhe uma posição de acordo com uma série de regras pré definidas. A biblioteca retorna a própria lista com a posição que ela escolheu.
 
-Inicialmente ele era independente, portanto, conseguimos testa-la sozinha no computador, deixando ela pronto para se conectar ao arduino, mesmo sem o arduino e sem a placa montada.
+Então fizemos um outro script, que coordena a posição que o jogador escolheu, a posição que o “computador escolheu”, que envia e faz a leitura de dados da serial e que executa os sons de acordo com o que está acontecendo.
 
-Isso só foi possivel por que padronizamos como a comunicação entre o Arduino e o computador seria feita, através de tabelas.
+Inicialmente ele era independente, portanto, conseguimos testá-la sozinha no computador, deixando ela pronto para se conectar ao Arduíno, mesmo sem o Arduíno e sem a placa montada.
 
-### Controlando o universo
-Ao mesmo tempo, iniciamos o planejamento e codificação de como o arduino iria controlar os leds e ler os botões.
+Isso só foi possível por que padronizamos como a comunicação entre o Arduíno e o computador seria feita, através de tabelas.
+
+---------------------------------------------------------------------------------------------------------------
+
+# Controlando o universo
+Ao mesmo tempo, iniciamos o planejamento e a codificação do Arduíno.
 
 Planejamos as respostas de duas perguntas principais:
-- O que o arduino vai fazer ao receber um sinal dos botões?
-- O que o arduino irá receber para ligar ou desligar os leds?
+- O que o Arduíno vai fazer ao receber um sinal dos botões?
+- O que o Arduíno receberá para ligar ou desligar os LED’s?
 
 Começando pela primeira:
 
-**O que o arduino vai fazer ao receber um sinal dos botões?**
+**O que o Arduíno vai fazer ao receber um sinal dos botões?**
 
-Qual sinal que o arduino deve enviar para serial *( que é onde o nosso script vai entender o que está acontecendo)*, quando cada botão for pressionado, ou seja, se o botão 1 for pressionado **(button1)**, qual sinal que o Arduino irá enviar para a serial?
+Ao receber um sinal dos botões, o Arduíno deve enviar para serial, reportando para o script qual botão que foi clicado, ou seja, se o botão 1 for pressionado **(button1)**, qual sinal que o Arduíno enviará para a serial?
 
 Definimos uma tabela padrão, que segue o modelo abaixo. 
 
@@ -78,76 +83,145 @@ Definimos uma tabela padrão, que segue o modelo abaixo.
 |    8    |  button8  |     9   |
 |    9    |  button9  |     10  |
 
-Nesse caso, se o **button4** for pressionado, ele enviará um sinal HIGH para o pino 5, esse sinal será lido pelo Arduino e ele irá enviar o sinal 4 para a serial. O papel do Arduino é basicamente isso. O script irá ler a serial e ver o sinal 4, entendendo que o button4 foi pressionado.
+Nesse caso, se o **button4** for pressionado, ele enviará um sinal HIGH para o pino 5, esse sinal será lido pelo Arduíno e ele enviará o sinal 4 para a serial. O papel do Arduíno é basicamente isso. O script irá ler a serial e ver o sinal 4, entendendo que o button4 foi pressionado.
 
 Ou seja, seguimos basicamente essa estrutura:   
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/botoes.png)
 
 Resumindo:
 - Um positivo alimenta todos os botões.
-- Na saída, forçamos os botões a terem uma saida LOW, quando não estiverem sendo pressionados, atravéz dos resistores de PULL DOWN.
-- As saidas vão para os pinos do Arduino, de 2 a 10.
-- Exemplificando, se o pino 10 for acionado, significa que o button 9 foi clicado, sendo assim, o Arduino deverá enviar o sinal 9 para a serial.
+- Na saída, forçamos os botões a terem uma saída LOW, quando não estiverem sendo pressionados, através dos resistores de PULL DOWN.
+- As saídas vão para os pinos do Arduíno, de 2 a 10.
 
-#### O que o arduino irá receber para ligar ou desligar os leds?
+Exemplificando novamente, se o pino 10 for acionado, significa que o button9 foi clicado, sendo assim, o Arduíno deverá enviar o sinal 9 para a serial e o script entenderá que o button9 foi clicado.
 
-Também criamos uma tabela padrão, que diz quais sinais devem estar na serial para que o arduino ligue ou desligue os Leds. 
+#### O que o Arduíno receberá para ligar ou desligar os LED’s?
 
-|  sinal  |    led    | status |
-|---------|-----------|--------|
-|   "a"   | LedVerde1 | ligado |
-|   "b"   | LedAzul1  | ligado |
-|   "c"   | LedVerde2 | ligado |
-|   "d"   | LedAzul2  | ligado |
-|   "e"   | LedVerde3 | ligado |
-|   "f"   | LedAzul3  | ligado |
-|   "g"   | LedVerde4 | ligado |
-|   "h"   | LedAzul4  | ligado |
-|   "i"   | LedVerde5 | ligado |
-|   "j"   | LedAzul5  | ligado |
-|   "k"   | LedVerde6 | ligado |
-|   "l"   | LedAzul6  | ligado |
-|   "m"   | LedVerde7 | ligado |
-|   "n"   | LedAzul7  | ligado |
-|   "o"   | LedVerde8 | ligado |
-|   "p"   | LedAzul8  | ligado |
-|   "q"   | LedVerde9 | ligado |
-|   "r"   | LedAzul9  | ligado |
-|   "z"   | *tudo     | deslig |
+Também criamos uma tabela padrão, que diz quais sinais devem estar na serial para que o Arduino ligue ou desligue os LED’s. 
 
-Nessa tabela, se o Arduino receber o sinal "a", ele deverá ligar o conjunto de leds verde do primeiro quadrado. Se ele receber um sinal "z", ele deverá desligar todos os leds. Para otimizarmos fios, tempo e recurso financeiros, decidimos que os 4 leds de um quadrado seriam ligados juntos, sendo assim, verificamos que seria viável usarmos um led de 220 OHM para cada 4 conjunto de leds, sendo assim, cumprindo o papel de funcionar durante o evento (Fatec Aberta) e custando menos tempo de manutenção, menos tempo montando, menos recursos financeiros e menos linhas de código.
+|  sinal  |    led    | status | pinagem | 
+|---------|-----------|--------|---------|
+|   "a"   | LedVerde1 | ligado |  22     |
+|   "b"   | LedAzul1  | ligado |  23     |
+|   "c"   | LedVerde2 | ligado |  24     |
+|   "d"   | LedAzul2  | ligado |  25     |
+|   "e"   | LedVerde3 | ligado |  26     |
+|   "f"   | LedAzul3  | ligado |  27     |
+|   "g"   | LedVerde4 | ligado |  28     |
+|   "h"   | LedAzul4  | ligado |  29     |
+|   "i"   | LedVerde5 | ligado |  30     |
+|   "j"   | LedAzul5  | ligado |  31     |
+|   "k"   | LedVerde6 | ligado |  32     |
+|   "l"   | LedAzul6  | ligado |  33     |
+|   "m"   | LedVerde7 | ligado |  34     |
+|   "n"   | LedAzul7  | ligado |  35     |
+|   "o"   | LedVerde8 | ligado |  36     |
+|   "p"   | LedAzul8  | ligado |  37     |
+|   "q"   | LedVerde9 | ligado |  38     |
+|   "r"   | LedAzul9  | ligado |  39     |
+|   "z"   | *tudo     | deslig | SERIAL  |
 
-> Os resistores servem para delimitar a corrente elétrica. Até onde sabemos, os leds que usamos possuem uma tensão nominal de 3.3 volts, sendo assim, ligar diretamente no 5 volts do Arduino é uma péssima ideia, portanto, ao adicionarmos os resistores de 220 OHM na saida dos 4 leds, a tensão é reduzida a níveis mais seguros para o funcionamento dos leds.
+Nessa tabela, vemos que, se o Arduíno receber o sinal "a", ele deverá ligar o conjunto de LED’s verde do primeiro quadrado, que está no pino 22. Se ele receber um sinal "z", ele deverá desligar todos os leds. 
+
+Para otimizarmos fios, tempo e recurso financeiros, decidimos que os 4 negativos dos leds de um quadrado seriam ligados juntos, sendo assim, verificamos que seria viável usarmos um resistor de 220 OHM para cada 4 conjuntos de LED’s, custando menos tempo de manutenção, menos tempo montando, menos recursos financeiros.
+
+> Os resistores servem para delimitar a corrente elétrica. Até onde sabemos, os LED’s que usamos possuem uma tensão nominal de 3.3 volts, sendo assim, ligar diretamente no 5 volts do Arduíno é uma péssima ideia, portanto, ao adicionarmos os resistores de 220 OHM na saída dos 4 leds, a tensão é reduzida a níveis seguros para o funcionamento dos leds.
 
 Sendo assim, o esquema para cada botão fica assim:    
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/leds.png)
 
-# Testando coisas
-# Compras
-Após definirmos e testarmos a parte eletronica todas as 
+Resumindo:
+- Interligamos o positivo dos dois LED’s verdes de cada botão.
+- Interligamos o positivo dos dois LED’s azuis de cada botão.
+- O positivo do conjunto de LED’s verdes vão em um pino e o positivo do conjunto de LED’s azuis vão em outro pino, seguindo a tabela acima.
+- Interligamos os quatro negativos a um resistor de 220 OHM conectando ao negativo.
 
-#  Lista de materiais 
+---------------------------------------------------------------------------------------------------------------
+
+# Testando coisas
+Após definirmos como as coisas deveriam funcionar e quais padrões iriamos seguir, começamos a testar se a nossa lógica, tanto de programa quanto física estaria correta. Montamos uma versão simplificada e bem feia de como tudo deveria funcionar.
+
+![Testando para ver se a lógica fazia sentido.](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/etapa%20de%20testes.jpeg)
+
+Nesse teste, descobrimos que nossa lógica estava correta, de forma bem robusta, nosso software e a parte física estavam respondendo conforme o planejado.
+
+---------------------------------------------------------------------------------------------------------------
+
+# Compras
+Após definirmos padrões e validarmos nosso circuito, com testes e análises, iniciamos a etapa de comprar o que faltava. Compramos tudo seguindo a tabela abaixo. (Algumas coisas nós já tínhamos, faça a sua própria lista de compras).
+
+###  Lista de materiais 
  
 | Qt | Nome | Preço | Explicação |   
 |-----|----------------------------|---------------|-------------------------------------|   
 | 2 | Metros de fio de rede. | R$: 2,00 | Conexões entre os componentes |   
-| 40 | Cabo Jumper Macho/?? | R$: 2,00 | Conexões entre o aruino e a placa | 
-| 18 | Leds verde de auto brilho. | R$: 0,5 cada | Xis | 
-| 18 | leds azul de auto brilho. | R$: 0,5 cada | Bolinha | 
+| 40 | Cabo Jumper Macho/?? | R$: 2,00 | Conexões entre o Arduíno e a placa | 
+| 18 | LED’s verde de autobrilho. | R$: 0,5 cada | Xis | 
+| 18 | LED’s azul de autobrilho. | R$: 0,5 cada | Bolinha | 
 | 9 | Push Button. | R$: 0,2 cada | Leitura do clique | 
 | 36 | Resistores 220 OHM. | R$: 0,15 cada | Controlar a tensão dos LEDS | 
 | 27 | Resistores 2K2. | R$: 0,15 cada | Definir um GND | 
-| 1 | Arduino MEGA 2560 | R$: 80,00 | Controle | 
-| 1 | Conector para Arduino | R$: 15,00 | Enviar comandos e controle | 
+| 1 | Arduíno MEGA 2560 | R$: 80,00 | Controle | 
+| 1 | Conector para Arduíno | R$: 15,00 | Enviar comandos e controle | 
 | 1 | Placa De Circuitos 15x15 | R$:20.00 | Circuitos eletrônicos | 
 | 3 | Metros de estanho. | R$: 2,00 | Conexões entre os sistemas | 
 | 9 | Blocos brancos | R$: 0,00 | Design | 
-| 1 | Notebook | R$: 450 | Célebro | 
+| 1 | Notebook | R$: 450 | Celebro | 
 
-#  Lista de ferramentas
+###  Lista de ferramentas
  
 | Qt  |            Nome            |     Preço     |              Explicação             | 
 |-----|----------------------------|---------------|-------------------------------------| 
 |  1  | Protoboard                 | R$: 20,00     | Circuitos de testes                 | 
 |  1  | Ferro de solda             | R$: 15,00     | Solda de componentes                | 
 |  1  | Alicate                    | R$: 00,00     | Corte de fios                       | 
+
+---------------------------------------------------------------------------------------------------------------
+
+# Montando tudo.
+Quando tivemos a certeza que tudo deveria funcionar conforme o planejado e tínhamos comprado os itens básicos, iniciamos a etapa de montagem de tudo. Foi mais ou menos assim:
+
+Com a placa em mãos, testamos o comportamento dos botões de plásticos que queriamos usar. Eles seriam a etapa final, mas nós precisávamos confirmar que eles ficariam bem com os botões.
+
+Com tudo de acordo, posicionamos os botões, os leds, os resistores e fomos soldando eles na placa. Como regra, nós sempre fazíamos etapa por etapa, ou seja, a etapa de interligação dos resistores dos botões era apenas isso, iniciávamos e finalizávamos nisso, fazendo testes para verificar se a solda estáva boa, se algum fio se soltou, se tem alguma coisa se comportando mal, etc.
+
+Fizemos isso até a última tarefa, sempre tentando fazer o melhor trabalho possível. Sem dúvidas, esse foi a tarefa mais demorada, e que exigiu mais testes.
+
+Essa etapa também foi a que mais exigiu delicadeza, já que erros poderiam ocasionar na não conclusão do projeto.
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/etapa%20de%20produ%C3%A7%C3%A3o.jpg)
+
+Quando a parte eletrônica estava toda soldada, fizemos mais um teste geral, validando que tudo estava funcionando de acordo com o que foi previsto e que não haviam curtos na placa. Após isso que sentimos confiança para ligar o a placa no Arduíno, como já tínhamos feito um teste na protoboard e a placa estava respondendo de acordo, a integração foi literalmente só ligar os fios, o resto já havia sido testado e validado as etapas anteriores.
+
+A parte superior ficou assim:
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/parte%20superior.jpg)
+
+A parte inferior ficou assim:
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/parte%20inferior.jpg)
+
+Colocando os botões obtivemos esse resultado:
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/vers%C3%A3o%20final.jpg)
+
+---------------------------------------------------------------------------------------------------------------
+
+# Aperfeiçoando
+Com tudo funcionando perfeitamente, adicionamos sons através do script em Python, adicionamos animações e fizemos diversas atualizações no código, deixando o jogo bem mais difícil contra o computador.
+
+O resultado do nosso trabalho pode ser visto nesse repositório.
+
+---------------------------------------------------------------------------------------------------------------
+
+# Como executar o programa?
+
+É necessário instalar o Python, de preferência na versão 3.6, adicionando o "Path" na variável de ambiente, caso você esteja usando o Windows.
+
+Depois precisamos instalar a biblioteca PyGame, que nos permite reproduzir os sons.
+
+```Bash
+pip install pygame
+```
+
+E então precisamos instalar o PySerial, essa biblioteca nos permite ler e enviar dados para a serial do Arduíno, sendo a nossa ponte entre o script e o Arduino
+```Bash
+pip install pyserial
+```
+O resultado final de tudo isso pode ser visto nesses vídeos.
