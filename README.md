@@ -35,6 +35,7 @@ Depois começamos a fazer testes, para ver como seria o modelo 3D, sem se preocu
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/img1.png)
 
 Usando diversos softwares para celular e para computador, fizemos um circuito eletrônico que seria legal e acessível para o nosso projeto, depois geramos um modelo 3D. Percebemos alguns novos problemas que poderíamos ter, então já iniciamos um plano B, considerando que esses problemas poderiam aparecer. 
+
 Na etapa de produção, acabamos contornando esses problemas, mas os modelos que fizemos, nos deram uma visão fantástica sobre como cada parte do circuito deveria funcionar, o que facilitou demais no desenvolvimento.
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/3d.png)
 
