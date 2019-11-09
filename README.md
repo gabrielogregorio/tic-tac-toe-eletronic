@@ -5,17 +5,18 @@ Um jogo da velha "gamer" para Fatec Aberta
 
  #  Nossas expectativas
 ##  Placa de Circuitos  
-! [] (https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/3d.png)
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/3d.png)
 
  -------------------------------------------------- --------------------------------------------------
 
  ##  Modelos visuais  
-! [] (https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/img4.png)
-! [] (https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/img1.png)
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/img4.png)
+![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/img1.png)
 
  -------------------------------------------------- --------------------------------------------------
 
  #  Lista de materiais  
+ 
 | Qt  |            Nome            |     Preço     |              Explicação             |
 | --- | -------------------------- | -------- ---- | ----------------------------------- |
 |  2  | Metros de fio de rede.     | R$: 2,00      | Conexões entre os componentes       |
@@ -33,7 +34,9 @@ Um jogo da velha "gamer" para Fatec Aberta
 |  1  | Notebook                   | R$: 450       | Célebro                             |
 
  #  Lista de ferramentas
+ 
 | Qt  |            Nome            |     Preço     |              Explicação             |
+|-----|----------------------------|---------------|-------------------------------------|
 |  1  | Protoboard                 | R$: 20,00     | Circuitos de testes                 |
 |  1  | Ferro de solda             | R$: 15,00     | Solda de componentes                |
 |  1  | Alicate                    | R$: 00,00     | Corte de fios                       |
