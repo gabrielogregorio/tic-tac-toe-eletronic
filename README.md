@@ -3,23 +3,25 @@ Um jogo da velha "gamer" para Fatec Aberta
 
  -------------------------------------------------- --------------------------------------------------
 
- #  Nossas expectativas
+#  Nossas expectativas
 ##  Placa de Circuitos  
+
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/3d.png)
 
  -------------------------------------------------- --------------------------------------------------
 
- ##  Modelos visuais  
+##  Modelos visuais
+ 
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/img4.png)
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/Projeto/Modelo%203D/Imagens/img1.png)
 
  -------------------------------------------------- --------------------------------------------------
 
- #  Lista de materiais  
+#  Lista de materiais 
  
-| Qt | Nome | Preço | Explicação | 
-| --- | -------------------------- | -------- ---- | ----------------------------------- | 
-| 2 | Metros de fio de rede. | R$: 2,00 | Conexões entre os componentes | 
+| Qt | Nome | Preço | Explicação |   
+|-----|----------------------------|---------------|-------------------------------------|   
+| 2 | Metros de fio de rede. | R$: 2,00 | Conexões entre os componentes |   
 | 40 | Cabo Jumper Macho/?? | R$: 2,00 | Conexões entre o aruino e a placa | 
 | 18 | Leds verde de auto brilho. | R$: 0,5 cada | Xis | 
 | 18 | leds azul de auto brilho. | R$: 0,5 cada | Bolinha | 
@@ -33,10 +35,10 @@ Um jogo da velha "gamer" para Fatec Aberta
 | 9 | Blocos brancos | R$: 0,00 | Design | 
 | 1 | Notebook | R$: 450 | Célebro | 
 
- #  Lista de ferramentas
+#  Lista de ferramentas
  
-| Qt  |            Nome            |     Preço     |              Explicação             |  
-|-----|----------------------------|---------------|-------------------------------------|  
-|  1  | Protoboard                 | R$: 20,00     | Circuitos de testes                 |  
-|  1  | Ferro de solda             | R$: 15,00     | Solda de componentes                |  
-|  1  | Alicate                    | R$: 00,00     | Corte de fios                       |  
+| Qt  |            Nome            |     Preço     |              Explicação             | 
+|-----|----------------------------|---------------|-------------------------------------| 
+|  1  | Protoboard                 | R$: 20,00     | Circuitos de testes                 | 
+|  1  | Ferro de solda             | R$: 15,00     | Solda de componentes                | 
+|  1  | Alicate                    | R$: 00,00     | Corte de fios                       | 
