@@ -204,7 +204,7 @@ Colocando os botões obtivemos esse resultado:
 ---------------------------------------------------------------------------------------------------------------
 
 # Aperfeiçoando
-Com tudo funcionando perfeitamente, adicionamos sons através do script em Python, adicionamos animações e fizemos diversas atualizações no código, deixando o jogo bem mais difícil contra o computador.
+Com tudo funcionando perfeitamente, adicionamos sons através do script em [Python](https://www.python.org/), adicionamos animações e fizemos diversas atualizações no código, deixando o jogo bem mais difícil contra o computador.
 
 O resultado do nosso trabalho pode ser visto nesse repositório.
 
@@ -212,15 +212,15 @@ O resultado do nosso trabalho pode ser visto nesse repositório.
 
 # Como executar o programa?
 
-É necessário instalar o Python, de preferência na versão 3.6, adicionando o "Path" na variável de ambiente, caso você esteja usando o Windows.
+É necessário instalar o [Python](https://www.python.org/), de preferência na versão 3.6, adicionando o "Path" na variável de ambiente, caso você esteja usando o Windows.
 
-Depois precisamos instalar a biblioteca PyGame, que nos permite reproduzir os sons.
+Depois precisamos instalar a biblioteca [PyGame](https://pypi.org/project/pygame/), que nos permite reproduzir os sons.
 
 ```Bash
 pip install pygame
 ```
 
-E então precisamos instalar o PySerial, essa biblioteca nos permite ler e enviar dados para a serial do Arduíno, sendo a nossa ponte entre o script e o Arduino
+E então precisamos instalar o [PySerial](https://pypi.org/project/pyserial/), essa biblioteca nos permite ler e enviar dados para a serial do Arduíno, sendo a nossa ponte entre o script e o Arduino
 ```Bash
 pip install pyserial
 ```
