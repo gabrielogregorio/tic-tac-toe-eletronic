@@ -15,12 +15,12 @@ Desenvolver um jogo da velha usando LED’s, que seja clicável, que tenha sons 
 ---------------------------------------------------------------------------------------------------------------
 
 # Planejando
-Criamos um quadro no [Trello](https://trello.com/), onde organizamos todas as etapas que iriamos precisar fazer para realizar o projeto.
+Primeiramente criamos um quadro no [Trello](https://trello.com/), onde organizamos todas as etapas que iriamos precisar fazer para realizar o projeto.
 
-Começamos por definir com exatidão o que cada parte faria:
-- O Arduíno ligará e desligar os LED’s e também irá ler o estado dos botões.
-- O circuíto eletrônico só terá função de obedecer aos comandos do Arduíno.
-- O script em Python dará comandos para o Arduíno, sendo ele quem lê as entradas, comanda as saídas e inicia a reprodução do som.
+Começamos por definir com exatidão o que cada parte do projeto faria:
+- O Arduíno ligará e desligará os LED’s de acordo com letras que serão enviadas na sua serial. Ele também irá ler o estado dos botões e enviar números para a serial.
+- O circuíto eletrônico só terá função de obedecer aos comandos do Arduíno e tratar de potenciais ruidos.
+- O script em Python dará comandos para o Arduíno, sendo que ele irá ler números na serial e irá enviar letras por ela. Ele também irá controlar a reprodução do som.
 - O sistema deve funcionar com perfeição no Windows 10.
 
 Depois, começamos a definir quem faria o que:
