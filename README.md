@@ -34,9 +34,8 @@ Depois começamos a fazer testes, para ver como seria o modelo 3D, sem se preocu
 
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/img1.png)
 
-Usando diversos softwares para celular e para computador, fizemos um circuito eletrônico que seria legal e acessível para o nosso projeto, depois geramos um modelo 3D. Percebemos alguns novos problemas que poderíamos ter, então já iniciamos um plano B, considerando que esses problemas poderiam aparecer. 
+Usando o software [PROTEUS](https://www.labcenter.com/)(Conseguimos acesso a um computador com o proteus, caso você não tenha acesso por ser um software pago, você pode usar outros programas como o [Every Circuit](https://everycircuit.com/)) fizemos um circuito eletrônico que seria acessível para o nosso projeto, depois geramos um modelo 3D. Os modelos que fizemos, nos deram uma visão fantástica sobre como cada parte do circuito deveria funcionar, o que facilitou demais no desenvolvimento e o planejamento sobre como iriamos organizar a parte elétrica na placa.   
 
-Na etapa de produção, acabamos contornando esses problemas, mas os modelos que fizemos, nos deram uma visão fantástica sobre como cada parte do circuito deveria funcionar, o que facilitou demais no desenvolvimento.
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/3d.png)
 
 ---------------------------------------------------------------------------------------------------------------
@@ -85,6 +84,7 @@ Definimos uma tabela padrão, que segue o modelo abaixo.
 Nesse caso, se o **button4** for pressionado, ele enviará um sinal HIGH para o pino 5, esse sinal será lido pelo Arduíno e ele enviará o sinal 4 para a serial. O papel do Arduíno é basicamente isso. O script irá ler a serial e ver o sinal 4, entendendo que o button4 foi pressionado.
 
 Ou seja, seguimos basicamente essa estrutura:   
+
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/botoes.png)
 
 Resumindo:
@@ -127,6 +127,7 @@ Para otimizarmos fios, tempo e recurso financeiros, decidimos que os 4 negativos
 > Os resistores servem para delimitar a corrente elétrica. Até onde sabemos, os LED’s que usamos possuem uma tensão nominal de 3.3 volts, sendo assim, ligar diretamente no 5 volts do Arduíno é uma péssima ideia, portanto, ao adicionarmos os resistores de 220 OHM na saída dos 4 leds, a tensão é reduzida a níveis seguros para o funcionamento dos leds.
 
 Sendo assim, o esquema para cada botão fica assim:    
+
 ![](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/imagens/leds.png)
 
 Resumindo:
