@@ -1,5 +1,5 @@
 #  Jogo da velha gamer
-Um jogo da velha **"gamer"** para Fatec Aberta ( Gamer é por que tem LED’s, isso aumenta o FPS do computador em 256 %, hashuashuashuas… )
+Um jogo da velha **"gamer"** para Fatec Aberta ( Gamer é por que tem LED’s, isso aumenta o FPS do computador em 256%)
 
 ---------------------------------------------------------------------------------------------------------------
 
