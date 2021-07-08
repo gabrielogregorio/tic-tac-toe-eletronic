@@ -4,7 +4,7 @@ Um jogo da velha **"gamer"** para Fatec Aberta ( Gamer é por que tem LED’s, i
 ---------------------------------------------------------------------------------------------------------------
 
 # Objetivo
-Desenvolver um jogo da velha usando LED’s, que seja clicável, que tenha sons e que seja executado em um computador, usando a linguagem Python 3 (Porque já tínhamos uma biblioteca própria mais ou menos pronta), um Arduíno mega ( Porque temos um exemplar e temos uma noção de como ambos se encaixam ) e que tenha uma estrutura parecido com esse modelo 3D que fizemos:
+Desenvolver um jogo da velha usando LED’s, que seja clicável, que tenha sons e que seja executado em um computador, usando a linguagem Python 3 (Porque já tínhamos uma biblioteca própria mais ou menos pronta), um Arduíno mega ( Porque temos um exemplar e temos uma noção de como ambos se encaixam ) e que tenha uma estrutura parecido com esse modelo 3D que fizemos no [blender](https://www.blender.org/) 2.8:
 
 ![O que pensamos em fazer](https://github.com/gabrielogregorio/jogo_da_velha_gamer/blob/master/modelo%203D/Imagens/img2.png)
 
@@ -17,13 +17,13 @@ Desenvolver um jogo da velha usando LED’s, que seja clicável, que tenha sons 
 # Planejando
 Primeiramente criamos um quadro no [Trello](https://trello.com/), onde organizamos todas as etapas que iriamos precisar fazer para realizar o projeto.
 
-Começamos por definir com exatidão o que cada parte do projeto faria:
+Começamos por definir com exatidão o que cada parte do projeto faria:  
 - O Arduíno ligará e desligará os LED’s de acordo com letras que serão enviadas na sua serial. Ele também irá ler o estado dos botões e enviar números para a serial.
 - O circuíto eletrônico só terá função de obedecer aos comandos do Arduíno e tratar de potenciais ruidos.
 - O script em Python dará comandos para o Arduíno, sendo que ele irá ler números na serial e irá enviar letras por ela. Ele também irá controlar a reprodução do som.
 - O sistema deve funcionar com perfeição no Windows 10.
 
-Depois, começamos a definir quem faria o que:
+Depois, começamos a definir quem faria o que:  
 - Quem vai fazer o script?
 - Quem vai trabalhar no Arduíno?
 - Quem vai fazer a placa?
@@ -40,8 +40,8 @@ Usando o software [PROTEUS](https://www.labcenter.com/)(Conseguimos acesso a um 
 
 ---------------------------------------------------------------------------------------------------------------
 
-# Criando os programas.
-### Desenvolvendo um cérebro.
+# Criando os programas
+### Desenvolvendo um cérebro
 Começamos a desenvolver uma versão simples de como o script funcionaria, decidimos adotar o Python 3.6 com a biblioteca PySerial para que pudéssemos nos conectarmos com o Arduíno. Posteriormente, adicionamos a biblioteca PyGame para reproduzir o som.
 
 A ideia é básica, eu reaproveitei pedaços de código de um jogo da velha que eu tinha feito anteriormente, em que ele recebe uma lista com 9 elementos, os elementos podem ser ' ', 'x' ou 'o'. Eles definem o estado de todas as posições no tabuleiro. A biblioteca analisa essa lista, com todos os dados sobre onde está cada jogador e então escolhe uma posição de acordo com uma série de regras pré definidas. A biblioteca retorna a própria lista com a posição que ela escolheu.
@@ -178,7 +178,7 @@ Após definirmos padrões e validarmos nosso circuito, com testes e análises, i
 
 ---------------------------------------------------------------------------------------------------------------
 
-# Montando tudo.
+# Montando tudo
 Quando tivemos a certeza que tudo deveria funcionar conforme o planejado e tínhamos comprado os itens básicos, iniciamos a etapa de montagem de tudo. Foi mais ou menos assim:
 
 Com a placa em mãos, testamos o comportamento dos botões de plásticos que queriamos usar. Eles seriam a etapa final, mas nós precisávamos confirmar que eles ficariam bem com os botões.
